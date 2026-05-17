@@ -1,4 +1,4 @@
-package org.peach.job.quartz;
+package org.peach.job.config;
 
 import org.quartz.spi.TriggerFiredBundle;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
@@ -16,7 +16,7 @@ import org.springframework.scheduling.quartz.SpringBeanJobFactory;
  *
  * @author leiyangjun
  */
-public class AutowiringSpringBeanJobFactory extends SpringBeanJobFactory implements ApplicationContextAware {
+public class QuartzSpringBeanJobFactory extends SpringBeanJobFactory implements ApplicationContextAware {
 
 	private AutowireCapableBeanFactory beanFactory;
 

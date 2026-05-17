@@ -13,9 +13,9 @@ import org.peach.common.mvc.result.code.MessageCode;
  */
 public enum BizMessageCode implements MessageCode {
 
-	NUMBER_FORMAT(4100, "新增定时任务发生状态转换错误，请联系管理员！"),
+	NUMBER_FORMAT(5100, "新增定时任务发生状态转换错误，请联系管理员！"),
 
-	SCHEDULER_MSG(4101, "新增定时任务发生未知错误，请联系管理员！");
+	SCHEDULER_MSG(5101, "新增定时任务发生未知错误，请联系管理员！");
 
 	private final int code;
 	private final String msg;

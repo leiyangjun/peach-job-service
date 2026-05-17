@@ -1,6 +1,5 @@
 package org.peach.job.config;
 
-import org.peach.job.quartz.AutowiringSpringBeanJobFactory;
 import org.springframework.boot.quartz.autoconfigure.SchedulerFactoryBeanCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,13 +14,13 @@ import org.springframework.context.annotation.Configuration;
 public class QuartzConfig {
 
 	@Bean
-	public AutowiringSpringBeanJobFactory autowiringSpringBeanJobFactory() {
-		return new AutowiringSpringBeanJobFactory();
+	public QuartzSpringBeanJobFactory autowiringSpringBeanJobFactory() {
+		return new QuartzSpringBeanJobFactory();
 	}
 
 	@Bean
 	public SchedulerFactoryBeanCustomizer peachJobSchedulerFactoryBeanCustomizer(
-			AutowiringSpringBeanJobFactory jobFactory) {
+			QuartzSpringBeanJobFactory jobFactory) {
 		return factory -> factory.setJobFactory(jobFactory);
 	}
 }

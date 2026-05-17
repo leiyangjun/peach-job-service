@@ -56,3 +56,12 @@ management:
     web:
       exposure:
         include: health,info
+
+peach:
+  job:
+    http-executor:
+      core-pool-size: 16
+      max-pool-size: 32
+      queue-capacity: 256
+      thread-name-prefix: job-http-
+      await-termination-seconds: 60

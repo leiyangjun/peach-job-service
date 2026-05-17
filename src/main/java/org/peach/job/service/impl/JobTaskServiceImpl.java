@@ -9,7 +9,6 @@ import org.peach.job.config.HttpJob;
 import org.peach.job.entity.JobTask;
 import org.peach.job.mapper.JobTaskMapper;
 import org.peach.job.service.JobTaskService;
-import org.peach.job.util.QuartzCronNormalizer;
 import org.peach.job.vo.JobTaskVO;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;
@@ -42,8 +41,7 @@ public class JobTaskServiceImpl extends BaseAbstractService<JobTaskMapper, JobTa
 	public Serializable save(JobTaskVO job) {
 		// 1. 保存到数据库
 		JobTask jobTask = BeanUtil.copy(job, JobTask.class);
-		String cronExpression = QuartzCronNormalizer.normalize(jobTask.getJobCronExpression());
-		jobTask.setJobCronExpression(cronExpression);
+		// String cronExpression = QuartzCronNormalizer.normalize(jobTask.getJobCronExpression());
 		this.mapper.insertBase(jobTask);
 		// 2. 构建JobKey
 		JobKey jobKey = JobKey.jobKey(jobTask.getId().toString());
@@ -54,7 +52,7 @@ public class JobTaskServiceImpl extends BaseAbstractService<JobTaskMapper, JobTa
 		CronTrigger trigger =
 			TriggerBuilder
 				.newTrigger().withIdentity(jobTask.getId().toString()).withSchedule(CronScheduleBuilder
-					.cronSchedule(cronExpression).withMisfireHandlingInstructionFireAndProceed())
+					.cronSchedule(jobTask.getJobCronExpression()).withMisfireHandlingInstructionFireAndProceed())
 				.build();
 		// 5. 注册到调度器
 		try {
