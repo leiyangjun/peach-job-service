@@ -4,7 +4,7 @@ import java.time.Duration;
 import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
-import org.peach.common.mvc.autoconfigure.PeachHttpClientPoolAutoConfiguration;
+import org.peach.common.mvc.httpclient.config.HttpClientPoolAutoConfiguration;
 import org.peach.common.utils.BeanUtil;
 import org.peach.job.service.JobHttpExecutionService;
 import org.peach.job.service.JobLogService;
@@ -43,7 +43,7 @@ public class JobHttpExecutionServiceImpl implements JobHttpExecutionService {
 
 	public JobHttpExecutionServiceImpl(JobLogService jobLogService,
 		@Qualifier("peachInterServiceRestClientBuilder") ObjectProvider<RestClient.Builder> interServiceRestClientBuilderProvider,
-		@Qualifier(PeachHttpClientPoolAutoConfiguration.PEACH_POOLED_HTTP_CLIENT) CloseableHttpClient peachPooledHttpClient,
+		@Qualifier(HttpClientPoolAutoConfiguration.PEACH_POOLED_HTTP_CLIENT) CloseableHttpClient peachPooledHttpClient,
 		ObjectMapper objectMapper) {
 		this.jobLogService = jobLogService;
 		this.interServiceRestClientBuilderProvider = interServiceRestClientBuilderProvider;

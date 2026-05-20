@@ -1,7 +1,7 @@
 package org.peach.job;
 
 import org.mybatis.spring.annotation.MapperScan;
-import org.peach.common.mvc.annotation.start.PeachCloud;
+import org.peach.common.mvc.bootstrap.annotation.PeachCloud;
 import org.springframework.boot.SpringApplication;
 
 /**
